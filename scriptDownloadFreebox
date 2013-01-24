@@ -1,8 +1,13 @@
 #! /bin/bash
+#
+# @uthor : valentinconan
+#
+# https://github.com/valentinconan/scriptDownloadFreebox
+#
 
 freeboxIpAddress='IP.IP.IP.IP'
 freeboxPasswd='motDePasse' 
-#Pour les caractères spéciaux comme un & par exemple, mettre la valeur ASCII soit %26
+#Pour les caracteres speciaux, comme un & par exemple, mettre la valeur ASCII, soit %26
 
 #URL EN ARGUMENT OU DEMANDE D'URL
 echo -ne "\nVerification de l'URL"
@@ -17,7 +22,7 @@ fi
 
 
 #CONNEXION A LA FREEBOX
-echo -ne "\nConnexion à la FreeBox"
+echo -ne "\nConnexion a la FreeBox"
 resultCurl=$( mktemp )
 curl -S -d "login=freebox&passwd=$freeboxPasswd" http://$freeboxIpAddress/login.php -v > $resultCurl 2>&1 
 if grep -q "Set-Cookie:" $resultCurl; then
