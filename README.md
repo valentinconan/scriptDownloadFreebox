@@ -10,8 +10,8 @@ Versions des outils utilisés :
 
 Configuration : Editez le scriptDownloadFreebox et modifiez les deux variables suivantes avec vos données:
 
-freeboxIpAddress='IP.IP.IP.IP'
-freeboxPasswd='motDePasse'
+- freeboxIpAddress='IP.IP.IP.IP'
+- freeboxPasswd='motDePasse'
 
 Utilisation : "bash scriptRenameFreebox <http://linkToDownload.com/file.txt>"
 
