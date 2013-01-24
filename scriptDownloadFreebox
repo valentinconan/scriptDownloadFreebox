@@ -7,7 +7,7 @@
 
 freeboxIpAddress='IP.IP.IP.IP'
 freeboxPasswd='motDePasse' 
-#Pour les caracteres speciaux, comme un & par exemple, mettre la valeur ASCII, soit %26
+#Pour les caracteres speciaux, comme un & par exemple, mettre la valeur hexadecimale ASCII, soit %26
 
 #URL EN ARGUMENT OU DEMANDE D'URL
 echo -ne "\nVerification de l'URL"
@@ -37,20 +37,19 @@ csrfToken=`grep "X-FBX-CSRF-Token" $resultCurl | cut -f 3 -d ' ' | sed "s/\r//" 
 fbxSid=`grep "FBXSID" $resultCurl | cut -f 3 -d ' ' | sed "s/FBXSID=//" | sed "s/;//" | sed "s/\r//" `
 
 #AJOUT DU TELECHARGEMENT A LA FREEBOX
-echo -en "\nAjout du 'Direct Download' à la FreeBox"
+echo -en "\nAjout du 'Direct Download' ï¿½ la FreeBox"
 curl -s -b FBXSID=$fbxSid -D - -o /dev/null -e http://$freeboxIpAddress/download.php http://$freeboxIpAddress/download.cgi --data-urlencode "csrf_token=$csrfToken" -d "url=$url&method=download.http_add" -H "X-Requested-With: XMLHttpRequest" -H "Accept: application/json, text/javascript, */*" > $resultCurl 2>&1
 if grep -q "HTTP/1.1 200 OK" $resultCurl; then
     echo -e "\t\t<  OK  >"
 else
     echo -e "\t\t<ERREUR>"
-    echo -e "\nImpossible d'ajouter ce téléchargement, valider la source du téléchargement.\nConnectez-vous à 'http://$freeboxIpAddress/download.php'\npour voir si vous ne l'avez pas déjà téléchargé.\n"
+    echo -e "\nImpossible d'ajouter ce tï¿½lï¿½chargement, valider la source du tï¿½lï¿½chargement.\nConnectez-vous ï¿½ 'http://$freeboxIpAddress/download.php'\npour voir si vous ne l'avez pas dï¿½jï¿½ tï¿½lï¿½chargï¿½.\n"
     rm $resultCurl > /dev/null 2>&1
     exit 2
 fi
 
 #DECONNECTION DE LA FREEBOX
-echo -e "\nDéconnexion de la FreeBox\t\t\t<  OK  >\n"
+echo -e "\nDï¿½connexion de la FreeBox\t\t\t<  OK  >\n"
 rm $resultCurl > /dev/null 2>&1
-#	`echo 'curl -s -b FBXSID='$fbxSid' -D - -o /dev/null -e http://'$freeboxIpAddress'/download.php http://'$freeboxIpAddress'/download.cgi --data-binary "csrf_token='$csrfToken'" -d "url='$url'&method=download.http_add" -H "X-Requested-With: XMLHttpRequest" -H "Accept: application/json, text/javascript, */*"' > /tmp.tmp.tmp`
-`echo $1 > /tmp.tmp.tmp`
+
 exit 0
