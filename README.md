@@ -13,7 +13,7 @@ Configuration : Editez le scriptDownloadFreebox et modifiez les deux variables s
 - freeboxIpAddress='IP.IP.IP.IP'
 - freeboxPasswd='motDePasse'
 
-Utilisation : "bash scriptRenameFreebox <http://linkToDownload.com/file.txt>"
+Utilisation : "bash scriptRenameFreebox \<http://linkToDownload.com/file.txt\>"
 
 =====================
 Inspiré des scripts de Zakhar 
